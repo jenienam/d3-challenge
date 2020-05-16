@@ -35,18 +35,18 @@ d3.csv("assets/data/data.csv").then(function(analyze) {
       });
     });
 //scale
-    var xLinearScale = d3.scaleLinear()
+    let xLinearScale = d3.scaleLinsear()
     .domain([20, d3.max(analyze, d => d.poverty)])
     .range([0, width]);
 
-    var yLinearScale = d3.scaleLinear()
+    let yLinearScale = d3.scaleLinear()
     .domain([0, d3.max(analyze, d => d.obesity)])
     .range([height, 0]);
 
   // Step 3: Create axis functions
     // ==============================
-    var bottomAxis = d3.axisBottom(xLinearScale);
-    var leftAxis = d3.axisLeft(yLinearScale);
+    let bottomAxis = d3.axisBottom(xLinearScale);
+    let leftAxis = d3.axisLeft(yLinearScale);
 
     // Step 4: Append Axes to the chart
     // ==============================
@@ -59,7 +59,7 @@ d3.csv("assets/data/data.csv").then(function(analyze) {
 
     // Step 5: Create Circles
     // ==============================
-    var circlesGroup = chartGroup.selectAll("circle")
+    let circlesGroup = chartGroup.selectAll("circle")
     .data(analyze)
     .enter()
     .append("circle")
@@ -69,7 +69,7 @@ d3.csv("assets/data/data.csv").then(function(analyze) {
 
      // Step 6: Create text label for circles
     // ===============================
-    var text_labels = chartGroup.selectAll("circle")
+    let text_labels = chartGroup.selectAll("circle")
     .data(analyze)
     .enter()
     .append("text")
@@ -81,7 +81,7 @@ d3.csv("assets/data/data.csv").then(function(analyze) {
 
     // Step 6: Initialize tool tip
     // ==============================
-    var toolTip = d3.tip()
+    let toolTip = d3.tip()
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(data) {
@@ -115,7 +115,3 @@ d3.csv("assets/data/data.csv").then(function(analyze) {
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
       .text("Percentage of Poverty");
-
-    }).catch(function(error) {
-        console.log(error);
-  });
