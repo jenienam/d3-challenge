@@ -114,4 +114,6 @@ d3.csv("assets/data/data.csv").then(function(analyze_data) {
       .attr("transform", `translate(${plot_width / 2}, ${plot_height + margin.top + 30})`)
       .attr("class", "axisText")
       .text("Percentage of Poverty");
-});
+ }).catch(function(error) {
+    console.log(error);
+    });
